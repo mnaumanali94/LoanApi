@@ -1,0 +1,454 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Loan API",
+    "version": "1.0",
+    "contact": {},
+    "description": "This API lets you manage users for Loan Applications"
+  },
+  "host": "loan-api-269422.appspot.com",
+  "schemes": [],
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "description": "Gets all users who have applied for a loan.",
+        "summary": "UsersGetUsers",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "UsersGetUsers",
+        "deprecated": false,
+        "produces": [
+          "application/vnd.restful+json"
+        ],
+        "parameters": [
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": false,
+            "default": "1.0",
+            "type": "string",
+            "description": "The requested API version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All users.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "headers": {}
+          },
+          "406": {
+            "description": "The MIME type in the Accept HTTP header is not acceptable.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "500": {
+            "description": "The MIME type in the Accept HTTP header is not acceptable.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "key": []
+          }
+        ]
+      },
+      "post": {
+        "description": "Creates a new user.",
+        "summary": "UsersPostUser",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "UsersPostUser",
+        "deprecated": false,
+        "produces": [
+          "application/vnd.restful+json"
+        ],
+        "consumes": [
+          "application/vnd.restful+json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "The user to create.",
+            "schema": {
+              "$ref": "#/definitions/SaveUser"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The user was created.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "The user is invalid.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "406": {
+            "description": "The MIME type in the Accept HTTP header is not acceptable.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "415": {
+            "description": "The MIME type in the Content-Type HTTP header is unsupported.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "500": {
+            "description": "The MIME type in the Accept HTTP header is not acceptable.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "key": []
+          }
+        ]
+      }
+    },
+    "/users/{userId}": {
+      "delete": {
+        "description": "Deletes the user with the specified unique identifier.",
+        "summary": "UsersDeleteUser",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "UsersDeleteUser",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "The users unique identifier."
+          },
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": false,
+            "default": "1.0",
+            "type": "string",
+            "description": "The requested API version"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The user with the specified unique identifier was deleted.",
+            "headers": {}
+          },
+          "404": {
+            "description": "A user with the specified unique identifier was not found.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "500": {
+            "description": "The MIME type in the Accept HTTP header is not acceptable.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "key": []
+          }
+        ]
+      },
+      "get": {
+        "description": "Gets the user with the specified unique identifier.",
+        "summary": "UsersGetUser",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "UsersGetUser",
+        "deprecated": false,
+        "produces": [
+          "application/vnd.restful+json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "The users unique identifier."
+          },
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": false,
+            "default": "1.0",
+            "type": "string",
+            "description": "The requested API version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user with the specified unique identifier.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "A user with the specified unique identifier could not be found.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "406": {
+            "description": "The MIME type in the Accept HTTP header is not acceptable.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "500": {
+            "description": "The MIME type in the Accept HTTP header is not acceptable.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "key": []
+          }
+        ]
+      },
+      "put": {
+        "description": "Updates an existing user with the specified unique identifier.",
+        "summary": "UsersPutUser",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "UsersPutUser",
+        "deprecated": false,
+        "produces": [
+          "application/vnd.restful+json"
+        ],
+        "consumes": [
+          "application/vnd.restful+json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "The user identifier."
+          },
+          {
+            "name": "api-version",
+            "in": "query",
+            "required": false,
+            "default": "1.0",
+            "type": "string",
+            "description": "The requested API version"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "The user to update.",
+            "schema": {
+              "$ref": "#/definitions/SaveUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user was updated.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "The user is invalid.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "404": {
+            "description": "A user with the specified unique identifier could not be found.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "406": {
+            "description": "The MIME type in the Accept HTTP header is not acceptable.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "415": {
+            "description": "The MIME type in the Content-Type HTTP header is unsupported.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          },
+          "500": {
+            "description": "The MIME type in the Accept HTTP header is not acceptable.",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "key": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "SaveUser": {
+      "title": "SaveUser",
+      "description": "A make and model of car.",
+      "type": "object",
+      "properties": {
+        "incorporationDate": {
+          "description": "Incorporation date of the organisation.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "loanPurpose": {
+          "description": "Purpose of the loan.",
+          "type": "string"
+        },
+        "industry": {
+          "description": "Industry of the organisation.",
+          "type": "string"
+        },
+        "revenue": {
+          "description": "Revenue of the organisation.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "requestedAmount": {
+          "description": "Amount requested by the user.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "incorporationDate",
+        "loanPurpose",
+        "industry",
+        "revenue",
+        "requestedAmount"
+      ]
+    },
+    "User": {
+      "title": "User",
+      "description": "A make and model of car.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "description": "Id of the user.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "incorporationDate": {
+          "description": "Incorporation date of the organisation.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "loanPurpose": {
+          "description": "Purpose of the loan.",
+          "type": "string"
+        },
+        "industry": {
+          "description": "Industry of the organisation.",
+          "type": "string"
+        },
+        "revenue": {
+          "description": "Revenue of the organisation.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "requestedAmount": {
+          "description": "Amount requested by the user.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "url": {
+          "description": "Gets or sets the URL used to retrieve the resource conforming to REST'ful JSON http://restfuljson.org/.",
+          "example": "/users/1",
+          "type": "string"
+        }
+      }
+    },
+    "ProblemDetails": {
+      "title": "ProblemDetails",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "instance": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Users",
+      "description": "The users group"
+    }
+  ],
+  "basePath": "/",
+  "securityDefinitions": {
+    "key": {
+      "name": "key",
+      "type": "apiKey",
+      "in": "query"
+    }
+  }
+}

@@ -32,6 +32,8 @@
     <Content Include="wwwroot\.well-known\security.txt">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <None Include="app.yaml" CopyToOutputDirectory="Always" />
+    <None Include="Dockerfile" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
   <ItemGroup Label="Package References">
