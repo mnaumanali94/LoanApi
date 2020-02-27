@@ -40,7 +40,12 @@ namespace LoanApi
         public virtual void ConfigureServices(IServiceCollection services) =>
             services
                 .AddCustomCaching()
-                .AddCustomCors()
+                .AddCors(o => o.AddPolicy(CorsPolicyName.AllowAny, builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                }))
                 .AddCustomOptions(this.configuration)
                 .AddCustomRouting()
                 .AddResponseCaching()
