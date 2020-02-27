@@ -3,11 +3,16 @@
   "info": {
     "title": "Loan API",
     "version": "1.0",
-    "contact": {},
+    "contact": {
+      "name": "Nauman Ali",
+      "email": "mnaumanali94@gmail.com"
+    },
     "description": "This API lets you manage users for Loan Applications"
   },
   "host": "loan-api-269422.appspot.com",
-  "schemes": [],
+  "schemes": [
+    "https"
+  ],
   "produces": [
     "application/json"
   ],
@@ -18,11 +23,11 @@
     "/users": {
       "get": {
         "description": "Gets all users who have applied for a loan.",
-        "summary": "UsersGetUsers",
+        "summary": "Get All Users",
         "tags": [
           "Users"
         ],
-        "operationId": "UsersGetUsers",
+        "operationId": "GetUsers",
         "deprecated": false,
         "produces": [
           "application/vnd.restful+json"
@@ -69,11 +74,11 @@
       },
       "post": {
         "description": "Creates a new user.",
-        "summary": "UsersPostUser",
+        "summary": "Add User",
         "tags": [
           "Users"
         ],
-        "operationId": "UsersPostUser",
+        "operationId": "AddUser",
         "deprecated": false,
         "produces": [
           "application/vnd.restful+json"
@@ -135,11 +140,11 @@
     "/users/{userId}": {
       "delete": {
         "description": "Deletes the user with the specified unique identifier.",
-        "summary": "UsersDeleteUser",
+        "summary": "Delete User",
         "tags": [
           "Users"
         ],
-        "operationId": "UsersDeleteUser",
+        "operationId": "DeleteUser",
         "deprecated": false,
         "produces": [
           "application/json"
@@ -188,11 +193,11 @@
       },
       "get": {
         "description": "Gets the user with the specified unique identifier.",
-        "summary": "UsersGetUser",
+        "summary": "Get User",
         "tags": [
           "Users"
         ],
-        "operationId": "UsersGetUser",
+        "operationId": "GetUser",
         "deprecated": false,
         "produces": [
           "application/vnd.restful+json"
@@ -250,11 +255,11 @@
       },
       "put": {
         "description": "Updates an existing user with the specified unique identifier.",
-        "summary": "UsersPutUser",
+        "summary": "Update User",
         "tags": [
           "Users"
         ],
-        "operationId": "UsersPutUser",
+        "operationId": "UpdateUser",
         "deprecated": false,
         "produces": [
           "application/vnd.restful+json"
@@ -339,7 +344,7 @@
   "definitions": {
     "SaveUser": {
       "title": "SaveUser",
-      "description": "A make and model of car.",
+      "description": "User model to post an entry",
       "type": "object",
       "properties": {
         "incorporationDate": {
@@ -372,11 +377,14 @@
         "industry",
         "revenue",
         "requestedAmount"
+      ],
+      "x-tags": [
+        "UserModels"
       ]
     },
     "User": {
       "title": "User",
-      "description": "A make and model of car.",
+      "description": "User model to recieve an entry",
       "type": "object",
       "properties": {
         "userId": {
@@ -412,7 +420,10 @@
           "example": "/users/1",
           "type": "string"
         }
-      }
+      },
+      "x-tags": [
+        "UserModels"
+      ]
     },
     "ProblemDetails": {
       "title": "ProblemDetails",
@@ -434,7 +445,11 @@
         "instance": {
           "type": "string"
         }
-      }
+      },
+      "description": "Details of the error",
+      "x-tags": [
+        "Errors"
+      ]
     }
   },
   "tags": [
